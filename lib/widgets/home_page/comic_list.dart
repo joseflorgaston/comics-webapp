@@ -57,15 +57,14 @@ class ListModeView extends StatelessWidget {
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
                 onTap: () {
-                  print(comics[index].apiDetailUrl);
-                  /*Navigator.push(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => ComicDetail(
                         comicDetailUrl: comics[index].apiDetailUrl,
                       ),
                     ),
-                  );*/
+                  );
                 },
                 behavior: HitTestBehavior.translucent,
                 child: OnHover(builder: (hovered) {
@@ -122,73 +121,6 @@ class ListModeView extends StatelessWidget {
               ),
             ),
           ),
-
-        /*Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white.withOpacity(0.1),
-              ),
-              alignment: Alignment.center,
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: () {},
-                  behavior: HitTestBehavior.translucent,
-                  child: SizedBox(
-                    height: 250,
-                    width: MediaQuery.of(context).size.width -
-                        (MediaQuery.of(context).size.width * 0.2),
-                    child: Wrap(
-                      alignment: WrapAlignment.start,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 150,
-                          height: 200,
-                          child: HtmlElementView(
-                            viewType: SharedFunctions.getImage(
-                              comics[index].image.originalUrl,
-                              200,
-                              150,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width -
-                              (MediaQuery.of(context).size.width * 0.2 + 301),
-                          child: Column(
-                            children: [
-                              Text(
-                                "${comics[index].volume.name} ${comics[index].issueNumber}",
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  height: 1.2,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              Text(
-                                "${comics[index].volume.name} ${comics[index].issueNumber}",
-                                style: GoogleFonts.poppins(
-                                  color: Colors.grey,
-                                  fontSize: 14,
-                                  height: 1.2,
-                                ),
-                                maxLines: 2,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),*/
       ],
     );
   }
@@ -222,7 +154,16 @@ class GridModeView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ComicDetail(
+                                comicDetailUrl: comics[index].apiDetailUrl,
+                              ),
+                            ),
+                          );
+                        },
                         child: SizedBox(
                           width: 150,
                           height: 200,

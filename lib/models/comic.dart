@@ -168,7 +168,7 @@ class ComicDetailsModel {
   String? siteDetailUrl;
   dynamic storeDate;
   List<dynamic>? storeArcCredits;
-  List<dynamic>? teamCredits;
+  List<CharacterCredits>? teamCredits;
   List<dynamic>? teamDisbandedIn;
   Volume? volume;
 
@@ -211,21 +211,7 @@ class ComicDetailsModel {
       apiDetailUrl: json["api_detail_url"],
       name: json["name"],
       siteDetailUrl: json["site_detail_url"],
-      image: ComicImage.fromJson(json["image"]),
       aliases: json["aliases"],
-      associatedImages: (json["associated_images"] as List<AssociatedImages>?)
-              ?.map((e) => AssociatedImages.fromJson(e as dynamic))
-              .toList() ??
-          [],
-      characterCredits: (json["character_credits"] as List<CharacterCredits>?)
-              ?.map((e) => CharacterCredits.fromJson(e as dynamic))
-              .toList() ??
-          [],
-      characterDiesIn: json["character_dies_in"],
-      conceptCredits: (json["concept_credits"] as List<CharacterCredits>?)
-              ?.map((e) => CharacterCredits.fromJson(e as dynamic))
-              .toList() ??
-          [],
       coverDate: json["cover_date"],
       dateAdded: json["date_added"],
       dateLastUpdate: json["date_last_update"],
@@ -239,26 +225,43 @@ class ComicDetailsModel {
       firstAppearanceTeams: json["first_appearance_teams"],
       hasStaffReview: json["has_staff_review"],
       issueNumber: json["issue_number"],
-      locationCredits: (json["location_credits"] as List<CharacterCredits>?)
-              ?.map((e) => CharacterCredits.fromJson(e as dynamic))
-              .toList() ??
-          [],
-      personCredits: (json["person_credits"] as List<CharacterCredits>?)
-              ?.map((e) => CharacterCredits.fromJson(e as dynamic))
-              .toList() ??
-          [],
       storeArcCredits: json["store_arc_credits"],
       storeDate: json["store_date"],
-      teamCredits: json["team_creadits"],
       teamDisbandedIn: json["team_disbanded_in"],
+      image: ComicImage.fromJson(json["image"]),
       volume: Volume.fromJson(json["volume"]),
+      locationCredits: (json["location_credits"] as List<dynamic>?)
+          ?.map((e) => CharacterCredits.fromJson(e as dynamic))
+          .toList() ??
+          [],
+      personCredits: (json["person_credits"] as List<dynamic>?)
+          ?.map((e) => CharacterCredits.fromJson(e as dynamic))
+          .toList() ??
+          [],
+      associatedImages: (json["associated_images"] as List<dynamic>?)
+          ?.map((e) => AssociatedImages.fromJson(e as dynamic))
+          .toList() ??
+          [],
+      characterCredits: (json["character_credits"] as List<dynamic>?)
+          ?.map((e) => CharacterCredits.fromJson(e as dynamic))
+          .toList() ??
+          [],
+      characterDiesIn: json["character_dies_in"],
+      conceptCredits: (json["concept_credits"] as List<dynamic>?)
+          ?.map((e) => CharacterCredits.fromJson(e as dynamic))
+          .toList() ??
+          [],
+      teamCredits: (json["team_credits"] as List<dynamic>?)
+          ?.map((e) => CharacterCredits.fromJson(e as dynamic))
+          .toList() ??
+          [],
     );
   }
 }
 
 class CharacterCredits {
   String? apiDetailUrl;
-  String? id;
+  num? id;
   String? name;
   String? siteDetailUrl;
 

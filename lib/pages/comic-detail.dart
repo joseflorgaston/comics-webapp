@@ -18,7 +18,6 @@ class ComicDetail extends StatelessWidget {
         child: Column(
           children: [
             const PageTitle(),
-            // HomePageHeader(),
             const Divider(color: Colors.orange,),
             Content(comicDetailUrl: comicDetailUrl,),
           ],

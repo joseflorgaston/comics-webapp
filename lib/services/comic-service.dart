@@ -6,6 +6,7 @@ class ComicService {
 
   Future<ComicListResponse> getComics() async {
     try {
+      //Had to make an Api cause of Flutter XHtmlError
       dynamic response = await dio.get(
         "https://pacific-ravine-45457.herokuapp.com/api/comics",
       );
@@ -24,8 +25,8 @@ class ComicService {
           "apiUrl" : apiDetailUrl
         }
       );
-
-      return ComicDetailsModel.fromJson(response.data);
+      ComicDetailsModel comic = ComicDetailsModel.fromJson(response.data);
+      return comic;
     } catch (e) {
       return ComicDetailsModel();
     }
