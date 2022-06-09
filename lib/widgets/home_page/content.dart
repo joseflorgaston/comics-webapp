@@ -3,18 +3,18 @@ import 'package:comic_test/services/comic-service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'comic_skeleton.dart';
-import 'comic_widget.dart';
+import 'comic_list.dart';
 
-class BookList extends StatefulWidget {
-  const BookList({
+class Content extends StatefulWidget {
+  const Content({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<BookList> createState() => _BookListState();
+  State<Content> createState() => _ContentState();
 }
 
-class _BookListState extends State<BookList> {
+class _ContentState extends State<Content> {
   bool isLoading = true;
   List<Comic> comics = [];
 
@@ -52,7 +52,7 @@ class _BookListState extends State<BookList> {
                 ? ComicsSkeleton(
                     isLoading: isLoading,
                   )
-                : ComicWidget(
+                : ComicList(
               comics: comics,
             ),
           ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/home_page/book_list.dart';
+import '../widgets/home_page/content.dart';
 import '../widgets/home_page/page_title.dart';
 import '../widgets/home_page/home_page_header.dart';
 import '../widgets/shared/background.dart';
@@ -35,10 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
           children: const [
             PageTitle(),
             HomePageHeader(),
-            Divider(
-              color: Colors.orange,
-            ),
-            BookList(),
+            Divider(color: Colors.orange,),
+            Content(),
           ],
         ),
       ),

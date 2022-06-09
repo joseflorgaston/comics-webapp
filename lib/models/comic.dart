@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class Comic {
   List<dynamic>? aliases;
   String apiDetailUrl;
@@ -134,6 +136,140 @@ class AssociatedImages {
       id: json["id"],
       caption: json["caption"],
       imageTags: json["image_tags"],
+    );
+  }
+}
+
+class ComicDetailsModel {
+  List<dynamic>? aliases;
+  String? apiDetailUrl;
+  List<AssociatedImages>? associatedImages;
+  List<CharacterCredits>? characterCredits;
+  List<dynamic>? characterDiesIn;
+  List<CharacterCredits>? conceptCredits;
+  String? coverDate;
+  String? dateAdded;
+  String? dateLastUpdate;
+  String? deck;
+  String? description;
+  String? firstAppearanceCharacters;
+  String? firstAppearanceConcepts;
+  String? firstAppearanceLocalization;
+  String? firstAppearanceObjects;
+  String? firstAppearanceStoryArcs;
+  String? firstAppearanceTeams;
+  bool? hasStaffReview;
+  num? id;
+  ComicImage? image;
+  String? issueNumber;
+  List<CharacterCredits>? locationCredits;
+  String? name;
+  List<CharacterCredits>? personCredits;
+  String? siteDetailUrl;
+  dynamic storeDate;
+  List<dynamic>? storeArcCredits;
+  List<dynamic>? teamCredits;
+  List<dynamic>? teamDisbandedIn;
+  Volume? volume;
+
+  ComicDetailsModel({
+    this.aliases,
+    this.volume,
+    this.image,
+    this.name,
+    this.apiDetailUrl,
+    this.id,
+    this.description,
+    this.deck,
+    this.storeDate,
+    this.associatedImages,
+    this.characterCredits,
+    this.characterDiesIn,
+    this.conceptCredits,
+    this.coverDate,
+    this.dateAdded,
+    this.dateLastUpdate,
+    this.firstAppearanceCharacters,
+    this.firstAppearanceConcepts,
+    this.firstAppearanceLocalization,
+    this.firstAppearanceObjects,
+    this.firstAppearanceStoryArcs,
+    this.firstAppearanceTeams,
+    this.hasStaffReview,
+    this.issueNumber,
+    this.locationCredits,
+    this.personCredits,
+    this.siteDetailUrl,
+    this.storeArcCredits,
+    this.teamCredits,
+    this.teamDisbandedIn,
+  });
+
+  factory ComicDetailsModel.fromJson(dynamic json) {
+    return ComicDetailsModel(
+      id: json["id"],
+      apiDetailUrl: json["api_detail_url"],
+      name: json["name"],
+      siteDetailUrl: json["site_detail_url"],
+      image: ComicImage.fromJson(json["image"]),
+      aliases: json["aliases"],
+      associatedImages: (json["associated_images"] as List<AssociatedImages>?)
+              ?.map((e) => AssociatedImages.fromJson(e as dynamic))
+              .toList() ??
+          [],
+      characterCredits: (json["character_credits"] as List<CharacterCredits>?)
+              ?.map((e) => CharacterCredits.fromJson(e as dynamic))
+              .toList() ??
+          [],
+      characterDiesIn: json["character_dies_in"],
+      conceptCredits: (json["concept_credits"] as List<CharacterCredits>?)
+              ?.map((e) => CharacterCredits.fromJson(e as dynamic))
+              .toList() ??
+          [],
+      coverDate: json["cover_date"],
+      dateAdded: json["date_added"],
+      dateLastUpdate: json["date_last_update"],
+      deck: json["deck"],
+      description: json["description"],
+      firstAppearanceCharacters: json["first_appearance_characters"],
+      firstAppearanceConcepts: json["first_appearance_concepts"],
+      firstAppearanceLocalization: json["first_appearance_localization"],
+      firstAppearanceObjects: json["first_appearance_objects"],
+      firstAppearanceStoryArcs: json["first_appearance_story_arcs"],
+      firstAppearanceTeams: json["first_appearance_teams"],
+      hasStaffReview: json["has_staff_review"],
+      issueNumber: json["issue_number"],
+      locationCredits: (json["location_credits"] as List<CharacterCredits>?)
+              ?.map((e) => CharacterCredits.fromJson(e as dynamic))
+              .toList() ??
+          [],
+      personCredits: (json["person_credits"] as List<CharacterCredits>?)
+              ?.map((e) => CharacterCredits.fromJson(e as dynamic))
+              .toList() ??
+          [],
+      storeArcCredits: json["store_arc_credits"],
+      storeDate: json["store_date"],
+      teamCredits: json["team_creadits"],
+      teamDisbandedIn: json["team_disbanded_in"],
+      volume: Volume.fromJson(json["volume"]),
+    );
+  }
+}
+
+class CharacterCredits {
+  String? apiDetailUrl;
+  String? id;
+  String? name;
+  String? siteDetailUrl;
+
+  CharacterCredits({this.apiDetailUrl, this.name, this.id, this.siteDetailUrl});
+
+  factory CharacterCredits.fromJson(dynamic json) {
+    return CharacterCredits(
+      id: json["id"],
+      apiDetailUrl: json["api_detail_url"],
+      name: json["name"],
+      siteDetailUrl: json["site_detail_url"],
     );
   }
 }

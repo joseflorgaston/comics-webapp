@@ -1,4 +1,6 @@
 import 'package:comic_test/blocs/list_mode_bloc.dart';
+import 'package:comic_test/pages/comic-detail.dart';
+import 'package:comic_test/pages/example.dart';
 import 'package:comic_test/pages/home-page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
