@@ -1,6 +1,4 @@
 import 'package:comic_test/blocs/list_mode_bloc.dart';
-import 'package:comic_test/pages/comic-detail.dart';
-import 'package:comic_test/pages/example.dart';
 import 'package:comic_test/pages/home-page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(),
+        home: const MyHomePage(), // The child is the widget returned
       ),
     );
   }

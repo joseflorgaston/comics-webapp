@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:comic_test/blocs/list_mode_bloc.dart';
 import 'package:comic_test/utilities/app_colors.dart';
 import 'package:comic_test/widgets/shared/hover_effect.dart';
@@ -143,28 +142,28 @@ class GridModeView extends StatelessWidget {
             ),
             child: OnHover(
               builder: (isHovered) {
-                return Container(
-                  width: 150,
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ComicDetail(
-                                comicDetailUrl: comics[index].apiDetailUrl,
-                              ),
-                            ),
-                          );
-                        },
-                        child: SizedBox(
+                return OutlinedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ComicDetail(
+                          comicDetailUrl: comics[index].apiDetailUrl,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
                           width: 150,
                           height: 200,
                           child: HtmlElementView(
@@ -172,10 +171,7 @@ class GridModeView extends StatelessWidget {
                                 comics[index].image.originalUrl, 150, 200),
                           ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Text(
+                        Text(
                           "${comics[index].volume.name} ${comics[index].issueNumber}",
                           style: GoogleFonts.poppins(
                             color: Colors.white,
@@ -185,10 +181,7 @@ class GridModeView extends StatelessWidget {
                           maxLines: 2,
                           textAlign: TextAlign.center,
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Text(
+                        Text(
                           comics[index].dateAdded,
                           style: GoogleFonts.poppins(
                             color: Colors.white,
@@ -196,8 +189,8 @@ class GridModeView extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

@@ -1,5 +1,5 @@
 name: comic_test
-description: A new Flutter project.
+description: A Sundev's test. Edit= Flutter web is Horrible.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -41,6 +41,7 @@ dependencies:
   dio: ^4.0.6
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
+  universal_html: ^2.0.8
 
 dev_dependencies:
   flutter_test:

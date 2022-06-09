@@ -1,7 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:comic_test/models/comic.dart';
 import 'package:comic_test/services/comic-service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skeletons/skeletons.dart';
@@ -215,7 +213,7 @@ class ComicDetailsWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.8,
       child: SingleChildScrollView(
         child: Wrap(
-          alignment: WrapAlignment.spaceBetween,
+          alignment: WrapAlignment.start,
           crossAxisAlignment: WrapCrossAlignment.start,
           children: [
             SizedBox(
@@ -233,7 +231,10 @@ class ComicDetailsWidget extends StatelessWidget {
                     ),
                   ),
                   const Divider(),
-                  CharactersList(info: comicDetails.characterCredits ?? []),
+                  CharactersList(
+                    info: comicDetails.characterCredits ?? [],
+                    imageUrl: '${comicDetails.image?.originalUrl}',
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -246,7 +247,10 @@ class ComicDetailsWidget extends StatelessWidget {
                     ),
                   ),
                   const Divider(),
-                  CharactersList(info: comicDetails.teamCredits ?? []),
+                  CharactersList(
+                    info: comicDetails.teamCredits ?? [],
+                    imageUrl: '${comicDetails.image?.originalUrl}',
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -259,7 +263,10 @@ class ComicDetailsWidget extends StatelessWidget {
                     ),
                   ),
                   const Divider(),
-                  CharactersList(info: comicDetails.locationCredits ?? []),
+                  CharactersList(
+                    info: comicDetails.locationCredits ?? [],
+                    imageUrl: '${comicDetails.image?.originalUrl}',
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -274,6 +281,7 @@ class ComicDetailsWidget extends StatelessWidget {
                   const Divider(),
                   CharactersList(
                     info: comicDetails.conceptCredits ?? [],
+                    imageUrl: '${comicDetails.image?.originalUrl}',
                   ),
                 ],
               ),
@@ -300,16 +308,18 @@ class ComicDetailsWidget extends StatelessWidget {
 }
 
 class CharactersList extends StatelessWidget {
-  const CharactersList({Key? key, required this.info}) : super(key: key);
+  const CharactersList({Key? key, required this.info, required this.imageUrl})
+      : super(key: key);
 
   final List<CharacterCredits> info;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Wrap(
-        alignment: WrapAlignment.spaceBetween,
+        alignment: WrapAlignment.start,
         crossAxisAlignment: WrapCrossAlignment.start,
         children: [
           for (var i = 0; i < info.length; i++)
@@ -323,23 +333,24 @@ class CharactersList extends StatelessWidget {
                       height: 75,
                       child: HtmlElementView(
                         viewType: SharedFunctions.getImage(
-                          "https://media.revistagq.com/photos/621f6d1723b7738d21d91e1d/4:3/w_1919,h_1439,c_limit/batman-uhdpaper.com-4K-17.jpg",
+                          imageUrl,
                           50,
                           50,
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      '${info[i].name}',
-                      style: GoogleFonts.poppins(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.orange,
+                    SizedBox(
+                      width: 80,
+                      child: Text(
+                        '${info[i].name}',
+                        style: GoogleFonts.poppins(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.orange,
+                        ),
                       ),
                     ),
+
                   ],
                 ),
               ),

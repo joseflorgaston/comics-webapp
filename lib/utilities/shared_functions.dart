@@ -1,5 +1,6 @@
-import 'dart:html';
 import 'dart:ui' as ui;
+
+import 'package:universal_html/html.dart';
 
 class SharedFunctions {
   static String doNothing() {
